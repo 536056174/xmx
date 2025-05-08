@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>閤梦希的个人网站</title>
+    <style>
+        /* 基础样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Microsoft YaHei', '微软雅黑', sans-serif;
+            color: #e8d7b0;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        /* 视频背景容器 */
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            overflow: hidden;
+        }
+        
+        .video-background video {
+            min-width: 100%;
+            min-height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        /* 背景遮罩 */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(20, 15, 10, 0.7);
+            z-index: -1;
+        }
+        
+        /* 导航栏样式 */
+        .nav-container {
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), transparent);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(5px);
+        }
+        
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+        
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #e8d7b0;
+            text-shadow: 0 0 10px #8b4513;
+            letter-spacing: 2px;
+            padding-left: 50px;
+            height: 50px;
+            line-height: 50px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            color: #e8d7b0;
+            text-decoration: none;
+            font-size: 1.2rem;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            position: relative;
+            background: rgba(139, 69, 19, 0.3);
+            border: 1px solid #8b4513;
+        }
+        
+        .nav-links a:hover {
+            background-color: rgba(139, 69, 19, 0.7);
+            color: #fff;
+            text-shadow: 0 0 5px #fff;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: #e8d7b0;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 80%;
+        }
+        
+        /* 主要内容区域 */
+        .main-content {
+            max-width: 1200px;
+            margin: 120px auto 50px;
+            padding: 40px;
+            min-height: 80vh;
+            background: rgba(20, 15, 10, 0.7);
+            border: 1px solid #8b4513;
+            border-radius: 10px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(3px);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: #e8d7b0;
+            text-shadow: 0 0 10px #8b4513;
+            border-bottom: 2px solid #8b4513;
+            padding-bottom: 15px;
+        }
+        
+        p {
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        
+        /* 页脚样式 */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            color: #e8d7b0;
+            backdrop-filter: blur(5px);
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 10px;
+            }
+            
+            .nav-links a {
+                font-size: 1rem;
+                padding: 8px 10px;
+            }
+            
+            .main-content {
+                margin-top: 100px;
+                padding: 20px;
+            }
+            
+            .logo {
+                font-size: 1.5rem;
+                padding-left: 40px;
+                height: 40px;
+                line-height: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 视频背景 -->
+    <div class="video-background">
+        <video autoplay muted loop id="bg-video">
+            <source src="./images/zhuyeshipin.mp4" type="video/mp4">
+            <!-- 备用图片 -->
+            <img src="./images/zhuye.jpg" alt="背景">
+        </video>
+    </div>
+    
+    <!-- 背景遮罩 -->
+    <div class="overlay"></div>
+    
+    <!-- 导航栏 -->
+    <div class="nav-container">
+        <nav>
+            <div class="logo">閤梦希</div>
+            <div class="nav-links">
+                <a href="shouye.html">首页</a>
+                <a href="jieshao.html">介绍</a>
+                <a href="carousel.html">作品</a>
+                <a href="xingqu.html">兴趣</a>
+                <a href="gengduo.html">更多</a>
+            </div>
+        </nav>
+    </div>
+    
+    <!-- 主要内容 -->
+    <div class="main-content">
+        <h1>欢迎来到我的网站</h1>
+        <p>这里是一个来自湖北随州的的大学生的精神世界</p>
+        <p>探索这个奇妙的世界，发现我的故事，与我形成羁绊，共同享受快乐。</p>
+        <p>无论是我的故土，还是我的爱好，这里都将带给你最主观的解答。</p>
+    </div>
+    
+    <!-- 页脚 -->
+    <footer>
+        <p>© 2025 閤梦希的个人主页 | 纵有疾风起，人生不言弃</p>
+    </footer>
+    
+    <script>
+        // 确保视频自动播放
+        document.addEventListener('DOMContentLoaded', function() {
+            const video = document.getElementById('bg-video');
+            video.play().catch(e => {
+                console.log("自动播放被阻止:", e);
+                // 可以在这里添加用户交互后播放的逻辑
+            });
+            
+            // 添加键盘控制示例
+            document.addEventListener('keydown', function(e) {
+                if (e.code === 'Space') {
+                    video.paused ? video.play() : video.pause();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的兴趣世界</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background: 
+                /* 深色半透明叠加层 */
+                linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+                /* 动态渐变背景 */
+                linear-gradient(135deg, #6e45e2 0%, #89d4cf 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+        
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .main-container {
+            text-align: center;
+            padding: 30px;
+            max-width: 1000px;
+            width: 90%;
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 50px;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+            letter-spacing: 2px;
+        }
+        
+        .buttons-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-top: 30px;
+        }
+        
+        .interest-button {
+            position: relative;
+            width: 280px;
+            height: 350px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+        
+        .interest-button:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+        }
+        
+        .interest-button img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .interest-button:hover img {
+            transform: scale(1.1);
+        }
+        
+        .button-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 30px;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            z-index: 2;
+        }
+        
+        .button-title {
+            font-size: 2.2rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+        }
+        
+        .button-desc {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+        
+        footer {
+            margin-top: 80px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 900px) {
+            .buttons-container {
+                gap: 30px;
+            }
+            
+            .interest-button {
+                width: 250px;
+                height: 320px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.8rem;
+                margin-bottom: 40px;
+            }
+            
+            .buttons-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 25px;
+            }
+            
+            .interest-button {
+                width: 280px;
+                height: 200px;
+            }
+            
+            .button-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <body>
+        <!-- 新增返回按钮 -->
+        <a href="shouye.html" class="home-button">返回首页</a>
+        <div class="carousel-container">
+        </div>
+    </body>
+    <style>
+        /* 返回按钮样式 */
+.home-button {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    padding: 10px 20px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    font-size: 16px;
+    z-index: 1000;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(5px); /* 毛玻璃效果 */
+}
+
+.home-button:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+</style>
+    <div class="main-container">
+        <h1>探索我的兴趣世界</h1>
+        
+        <div class="buttons-container">
+            <a href="game.html" class="interest-button">
+                <img src="./images/game.png" alt="游戏">
+                <div class="button-content">
+                    <div class="button-title">游戏</div>
+                    <div class="button-desc">探索我的游戏世界，从竞技到剧情，分享我的游戏体验和心得</div>
+                </div>
+            </a>
+            
+            <a href="dongman.html" class="interest-button">
+                <img src="./images/free.webp" alt="动漫">
+                <div class="button-content">
+                    <div class="button-title">动漫</div>
+                    <div class="button-desc">跟随我的足迹，探索我的精神世界</div>
+                </div>
+            </a>
+            
+            <a href="music.html" class="interest-button">
+                <img src="./images/music.jpg" alt="音乐">
+                <div class="button-content">
+                    <div class="button-title">音乐</div>
+                    <div class="button-desc">走进我的音乐宇宙，分享喜欢的歌曲和创作</div>
+                </div>
+            </a>
+        </div>
+    </div>
+    
+    <footer>
+        © 2025 我的兴趣空间 | 用热情创造生活
+    </footer>
+</body>
+</html>

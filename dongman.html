@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>三排斜向彩色胶囊滚动（完整颜色修复）</title>
+    <style>
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: #1a1a2e;
+            overflow-x: hidden;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .scroll-container {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            transform: rotate(-5deg) scale(1.2);
+        }
+
+        .track {
+            display: flex;
+            white-space: nowrap;
+            margin: 20px 0;
+            position: relative;
+        }
+
+        .track:nth-child(odd) {
+            animation: slideLeft 30s linear infinite;
+        }
+
+        .track:nth-child(even) {
+            animation: slideRight 25s linear infinite;
+        }
+
+        .track:hover {
+            animation-play-state: paused;
+        }
+
+        .capsule {
+            position: relative;
+            width: 280px;
+            height: 150px;
+            border-radius: 75px;
+            margin: 0 25px;
+            display: inline-flex;
+            align-items: center;
+            padding: 15px;
+            flex-shrink: 0;
+            transition: transform 0.3s;
+            cursor: pointer;
+            overflow: hidden;
+            border: 3px solid rgba(255,255,255,0.3);
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.2);
+        }
+
+        /* 修复关键点：为所有可能出现的胶囊位置设置颜色 */
+        .track:nth-child(1) .capsule:nth-child(5n+1) { background: linear-gradient(45deg, #FF6B6B, #FF8E8E); }
+        .track:nth-child(1) .capsule:nth-child(5n+2) { background: linear-gradient(45deg, #74B9FF, #0984E3); }
+        .track:nth-child(1) .capsule:nth-child(5n+3) { background: linear-gradient(45deg, #55EFC4, #00B894); }
+        .track:nth-child(1) .capsule:nth-child(5n+4) { background: linear-gradient(45deg, #6C5CE7, #A363D9); }
+        .track:nth-child(1) .capsule:nth-child(5n+5) { background: linear-gradient(45deg, #FFEAA7, #FDCB6E); }
+
+        .track:nth-child(2) .capsule:nth-child(5n+1) { background: linear-gradient(45deg, #FF7675, #D63031); }
+        .track:nth-child(2) .capsule:nth-child(5n+2) { background: linear-gradient(45deg, #00B894, #55E6C1); }
+        .track:nth-child(2) .capsule:nth-child(5n+3) { background: linear-gradient(45deg, #0984E3, #74B9FF); }
+        .track:nth-child(2) .capsule:nth-child(5n+4) { background: linear-gradient(45deg, #6D214F, #B33771); }
+        .track:nth-child(2) .capsule:nth-child(5n+5) { background: linear-gradient(45deg, #FDCB6E, #E17055); }
+
+        .track:nth-child(3) .capsule:nth-child(5n+1) { background: linear-gradient(45deg, #00CEC9, #81ECEC); }
+        .track:nth-child(3) .capsule:nth-child(5n+2) { background: linear-gradient(45deg, #A569BD, #9B59B6); }
+        .track:nth-child(3) .capsule:nth-child(5n+3) { background: linear-gradient(45deg, #E67E22, #D35400); }
+        .track:nth-child(3) .capsule:nth-child(5n+4) { background: linear-gradient(45deg, #2ECC71, #27AE60); }
+        .track:nth-child(3) .capsule:nth-child(5n+5) { background: linear-gradient(45deg, #3498DB, #2980B9); }
+
+        .capsule:hover {
+            transform: scale(1.1) rotate(3deg);
+            border-color: rgba(255,255,255,0.6);
+        }
+
+        .capsule.selected {
+            transform: scale(2) rotate(0deg) !important;
+            z-index: 1000;
+            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            box-shadow: 0 0 50px rgba(0,0,0,0.5);
+            border-color: white !important;
+        }
+
+        .character-img {
+            width: 120px;
+            height: 120px;
+            transform: rotate(-15deg);
+            filter: drop-shadow(5px 5px 10px rgba(0,0,0,0.3));
+            object-fit: cover;
+            border-radius: 20px;
+        }
+
+        .content {
+            color: white;
+            margin-left: 15px;
+            white-space: normal;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+
+        .title {
+            font-size: 1.2em;
+            margin-bottom: 5px;
+            color: #ffeaa7;
+        }
+
+        .description {
+            font-size: 0.8em;
+            line-height: 1.4;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        @keyframes slideLeft {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        @keyframes slideRight {
+            0% { transform: translateX(-50%); }
+            100% { transform: translateX(0%); }
+        }
+
+        /* 轨道位置调整 */
+        .track:nth-child(2) { margin-left: 150px; }
+        .track:nth-child(3) { margin-left: -150px; }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .scroll-container {
+                transform: rotate(-3deg) scale(1.1);
+            }
+            .capsule {
+                width: 220px;
+                height: 120px;
+                margin: 0 15px;
+            }
+            .character-img {
+                width: 80px;
+                height: 80px;
+            }
+            .title {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <body>
+        <!-- 新增返回按钮 -->
+        <a href="xingqu.html" class="home-button">返回</a>
+        <div class="carousel-container">
+        </div>
+    </body>
+    <style>
+        /* 返回按钮样式 */
+.home-button {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    padding: 10px 20px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    font-size: 16px;
+    z-index: 1000;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(5px); /* 毛玻璃效果 */
+}
+
+.home-button:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+</style>
+    <div class="scroll-container">
+        <!-- 第一排 -->
+        <div class="track">
+            <div class="capsule">
+                <img src="./images/zhuye.jpg" class="character-img" alt="冒险少年">
+                <div class="content">
+                    <h2 class="title">四月一日灵异事件簿</h2>
+                    <p class="description">孤独的高中生四月一日能看到寄居于人心深处的妖怪</p>
+                </div>
+            </div>
+            <div class="capsule">
+                <img src="./images/01.jpg" class="character-img" alt="歌姬">
+                <div class="content">
+                    <h2 class="title">名侦探柯南</h2>
+                    <p class="description">真相只有一个！</p>
+                </div>
+            </div>
+            <div class="capsule">
+                <img src="./images/02.jpg" class="character-img" alt="龙骑士">
+                <div class="content">
+                    <h2 class="title">终结的炽天使</h2>
+                    <p class="description">不知何时病毒侵袭，13岁以下的孩子侥幸活下却被吸血鬼奴役</p>
+                </div>
+            </div>
+            <div class="capsule">
+                <img src="./images/03.jpg" class="character-img" alt="机械师">
+                <div class="content">
+                    <h2 class="title">忧国的莫里亚蒂</h2>
+                    <p class="description">当莫里亚蒂成为主角，福尔摩斯成为追逐者</p>
+                </div>
+            </div>
+            <div class="capsule">
+                <img src="./images/04.jpg" class="character-img" alt="阴阳师">
+                <div class="content">
+                    <h2 class="title">海边的异邦人</h2>
+                    <p class="description">画风十分唯美，内容自行探索</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 第二排 -->
+        <div class="track">
+            <div class="capsule">
+                <img src="./images/05.jpg" class="character-img" alt="剑士">
+                <div class="content">
+                    <h2 class="title">无限滑板</h2>
+                    <p class="description">两名高中生男主共同面对滑板界的强敌与隐藏阴谋的故事</p>
+                </div>
+            </div>
+            <div class="capsule">
+                <img src="./images/06.jpg" class="character-img" alt="魔法少女">
+                <div class="content">
+                    <h2 class="title">葬送的芙莉莲</h2>
+                    <p class="description">魔法师芙莉莲与勇者辛美尔等人一起战胜魔王后，为世界带来了和平</p>
+                </div>
+            </div>
+            <div class="capsule">
+                <img src="./images/07.jpg" class="character-img" alt="侦探">
+                <div class="content">
+                    <h2 class="title">强风吹拂</h2>
+                    <p class="description">纵有疾风起，人生不言弃</p>
+                </div>
+            </div>
+            <div class="capsule">
+                <img src="./images/08.jpg" class="character-img" alt="厨师">
+                <div class="content">
+                    <h2 class="title">电锯人</h2>
+                    <p class="description">让恶魔寄生在自己身体里去狩猎恶魔，新时代黑暗英雄故事，开幕</p>
+                </div>
+            </div>
+            <div class="capsule">
+                <img src="./images/09.jpg" class="character-img" alt="宇航员">
+                <div class="content">
+                    <h2 class="title">蓝色监狱</h2>
+                    <p class="description">300名天赋有优秀的高中前锋在封闭球场中集训选拔出世界第一前锋</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 第三排 -->
+        <div class="track">
+            <div class="capsule">
+                <img src="./images/10.jpg" class="character-img" alt="忍者">
+                <div class="content">
+                    <h2 class="title">冰上的尤里</h2>
+                    <p class="description">以花样滑冰为题材创作的动画，勇利拥有独特的节奏感和步法</p>
+                </div>
+            </div>
+            <div class="capsule">
+                <img src="./images/12.jpg" class="character-img" alt="偶像">
+                <div class="content">
+                    <h2 class="title">排球少年</h2>
+                    <p class="description">谁说一米七不是巨人？一米七也可以是王牌主力</p>
+                </div>
+            </div>
+            <div class="capsule">
+                <img src="./images/13.jpg" class="character-img" alt="科学家">
+                <div class="content">
+                    <h2 class="title">黑子的篮球</h2>
+                    <p class="description">当奇迹世代的六人遇上第七人，他们会如何选择</p>
+                </div>
+            </div>
+            <div class="capsule">
+                <img src="./images/14.jpg" class="character-img" alt="拳击手">
+                <div class="content">
+                    <h2 class="title">Free</h2>
+                    <p class="description">充满跃动感的高中生展开关于游泳、青春与羁绊的故事</p>
+                </div>
+            </div>
+            <div class="capsule">
+                <img src="./images/11.jpg" class="character-img" alt="妖精">
+                <div class="content">
+                    <h2 class="title">弦音</h2>
+                    <p class="description">高中生鸣宫凑在经历挫折后重拾弓道</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const tracks = document.querySelectorAll('.track');
+            let selectedCapsule = null;
+            let isPlaying = true;
+
+            // 初始化滚动
+            function initScroll() {
+                tracks.forEach(track => {
+                    const originalContent = track.innerHTML;
+                    track.innerHTML += originalContent.repeat(3);
+                    track.style.animationDuration = `${parseFloat(getComputedStyle(track).animationDuration) * 0.8}s`;
+                });
+            }
+
+            // 控制滚动状态
+            function toggleScroll(play) {
+                tracks.forEach(t => {
+                    t.style.animationPlayState = play ? 'running' : 'paused';
+                });
+                isPlaying = play;
+            }
+
+            // 点击交互功能
+            function setupCapsuleInteractions() {
+                document.querySelectorAll('.capsule').forEach(capsule => {
+                    capsule.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        
+                        if (selectedCapsule === this) {
+                            // 恢复状态
+                            toggleScroll(true);
+                            this.classList.remove('selected');
+                            selectedCapsule = null;
+                        } else {
+                            // 暂停所有轨道
+                            toggleScroll(false);
+                            
+                            // 移除之前选中的样式
+                            if (selectedCapsule) {
+                                selectedCapsule.classList.remove('selected');
+                            }
+                            
+                            // 设置当前选中状态
+                            this.classList.add('selected');
+                            selectedCapsule = this;
+                            
+                            // 自动居中
+                            const rect = this.getBoundingClientRect();
+                            window.scrollTo({
+                                top: rect.top - window.innerHeight/2 + rect.height/2,
+                                behavior: 'smooth'
+                            });
+                        }
+                    });
+                });
+
+                // 点击空白处恢复
+                document.addEventListener('click', (e) => {
+                    if (!e.target.closest('.capsule') && selectedCapsule) {
+                        toggleScroll(true);
+                        selectedCapsule.classList.remove('selected');
+                        selectedCapsule = null;
+                    }
+                });
+            }
+
+            initScroll();
+            setupCapsuleInteractions();
+        });
+    </script>
+</body>
+</html>

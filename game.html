@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Expanding Cards</title>
+    <body>
+        <!-- 新增返回按钮 -->
+        <a href="xingqu.html" class="home-button">返回</a>
+        <div class="carousel-container">
+        </div>
+    </body>
+    <style>
+        /* 添加全屏背景 */
+body {
+    position: relative;
+    background: url('./images/zhuye.jpg') no-repeat center center fixed;
+    background-size: cover;
+    /* 保留你原有的flex样式 */
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+/* 添加半透明遮罩层（可选） */
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.7); /* 白色半透明遮罩，调节透明度 */
+    z-index: -1; /* 确保内容在遮罩上方 */
+}
+
+/* 修改轮播容器背景为透明 */
+.carousel-container {
+    background-color: transparent; /* 原代码中删除或覆盖背景色 */
+    /* 其他原有样式保持不变 */
+}
+
+        /* 返回按钮样式 */
+.home-button {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    padding: 10px 20px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    font-size: 16px;
+    z-index: 1000;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(5px); /* 毛玻璃效果 */
+}
+
+.home-button:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Muli', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+            margin: 0;
+        }
+
+        .container {
+            display: flex;
+            width: 90vw;
+        }
+
+        .panel {
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 80vh;
+            border-radius: 50px;
+            color: #fff;
+            cursor: pointer;
+            flex: 0.5;
+            margin: 10px;
+            position: relative;
+            transition: all 700ms ease-in;
+        }
+
+        .panel h3 {
+            font-size: 24px;
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            margin: 0;
+            opacity: 0;
+        }
+
+        .panel.active {
+            flex: 5;
+        }
+
+        .panel.active h3 {
+            opacity: 1;
+            transition: opacity 0.3s ease-in 0.4s;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                width: 100vw;
+            }
+
+            .panel:nth-of-type(4),
+            .panel:nth-of-type(5) {
+                display: none;
+            }
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            const panels = document.querySelectorAll('.panel')
+                panels.forEach(panel => {
+                    panel.addEventListener('click', () => {
+                        removeActiveClasses()
+                        panel.classList.add('active')
+                    })
+                })
+
+            function removeActiveClasses() {
+                panels.forEach(panel => {
+                    panel.classList.remove('active')
+                })
+            }    
+        }
+        
+    </script>
+</head>
+
+<body>
+    <div class="container">
+       
+        <div class="panel active"
+      
+            style="background-image: url('./images/vct.webp')">
+            <h3>Valorant
+                <p>这是我最喜欢的游戏无畏契约的几个角色立绘和简介</p>
+            </h3>
+        </div>
+            <div class="panel"
+            style="background-image: url('./images/sage.jpg')">
+            <h3>Sage
+                <p>“贤者”是华夏文明的后代,她可以用超能力阻滞敌方攻势、为队友提供保护和治
+                    疗,甚至还能复活队友。有她在的地方,就如同是腥风血雨中的一处避风港。
+                </p>
+
+            </h3>
+        </div>
+        <div class="panel"
+            style="background-image: url('./images/jett.jpg')">
+            <h3>Jett
+                <p>
+                    “捷风”是新罗人的后代,她灵活机动的战斗风格使她能够采取比常人更激进和冒
+险的策略。她可以在战场上肆意纵横,将敌人逐个击破,或是把他们打个措手不
+及。
+                </p>
+            </h3>
+        </div>
+        <div class="panel"
+            style="background-image: url('./images/clove.jpg')">
+            <h3>Clove
+                <p>
+                    来自不列颠群岛北部的“暮蝶”擅长用自己的招牌恶作剧来捉弄敌人。即便在被击
+败后,这位年轻的永生者也能继续干扰敌人,甚至出其不意地返场再战。
+                </p>
+            </h3>
+        </div>
+        <div class="panel"
+            style="background-image: url('./images/omen.jpg')">
+            <h3>Omen
+                <p>
+                    “幽影”是暗影中的狩猎者,关于他的过去只有一段模糊的记忆。他能传送到战场
+的任意位置,还能剥夺敌人的视野与理智,使其陷入草木皆兵的境地。
+                </p>
+            </h3>
+        </div>
+        <div class="panel"
+            style="background-image: url('./images/reyna.jpg')">
+            <h3>Reyna
+                <p>
+                    “芮娜”的威名铸就于马德雷山脉。虽然初始技能有所限制,但她能在狭路相逄的
+决斗中变得越来越强,直至觉醒强大的超能力,这使得她的实战表现格外重要。
+                </p>
+            </h3>
+        </div>
+        <div class="panel"
+            style="background-image: url('./images/viper.jpg')">
+            <h3>Viper
+                <p>
+                    “蝰蛇”是一位来自美洲大陆的化学家,擅长部署毒性化学装置来控制战场并削弱
+敌人的视野。即便猎物没倒在她的毒素之下,她也会利用心理战将其击溃。
+                </p>
+            </h3>
+    </div>
+
+    </div>
+
+ <footer>
+        © 2025 閤梦希 版权所有
+    </footer>
+</body>
+
+</html>

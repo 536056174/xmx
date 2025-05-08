@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>湖北随州 - 编钟之乡，炎帝故里</title>
+    <body>
+        <!-- 新增返回按钮 -->
+        <a href="jieshao.html" class="home-button">返回</a>
+        <div class="carousel-container">
+        </div>
+    </body>
+    <style>
+        /* 返回按钮样式 */
+.home-button {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    padding: 10px 20px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    font-size: 16px;
+    z-index: 1000;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(5px); /* 毛玻璃效果 */
+}
+
+.home-button:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+   
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", "微软雅黑", sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://example.com/suizhou-banner.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 0 20px;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .subtitle {
+            font-size: 1.5rem;
+            max-width: 800px;
+            margin-bottom: 30px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        section {
+            margin-bottom: 50px;
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        h2 {
+            color: #c8161d;
+            border-bottom: 2px solid #c8161d;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+        
+        .feature-box {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .feature {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .feature img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        
+        .feature h3 {
+            color: #c8161d;
+            margin-bottom: 10px;
+        }
+        
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+        }
+        
+        .history-timeline {
+            position: relative;
+            padding-left: 50px;
+        }
+        
+        .history-timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: #c8161d;
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -38px;
+            top: 5px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: #c8161d;
+            border: 3px solid white;
+        }
+        
+        .timeline-year {
+            font-weight: bold;
+            color: #c8161d;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>湖北随州</h1>
+        <p class="subtitle">编钟之乡 · 炎帝故里 · 历史文化名城</p>
+    </header>
+    
+    <div class="container">
+        <section>
+            <h2>城市概况</h2>
+            <p>随州市位于湖北省北部，地处长江流域和淮河流域的交汇地带，是湖北省最年轻的地级市。随州历史悠久，文化底蕴深厚，是华夏始祖炎帝神农的诞生地，也是举世闻名的曾侯乙编钟的出土地。</p>
+            <p>随州总面积9636平方公里，常住人口约200万，下辖曾都区、广水市、随县。这里气候宜人，四季分明，物产丰富，素有"鄂北明珠"的美誉。</p>
+        </section>
+        
+        <section>
+            <h2>历史文化</h2>
+            <div class="history-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-year">距今5000多年前</div>
+                    <p>炎帝神农氏在此诞生，开创了华夏农耕文明</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">公元前433年</div>
+                    <p>曾侯乙墓下葬，随葬品包括举世闻名的曾侯乙编钟</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">1978年</div>
+                    <p>曾侯乙编钟出土，改写了世界音乐史</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2000年</div>
+                    <p>随州升格为地级市</p>
+                </div>
+            </div>
+        </section>
+        
+        <section>
+            <h2>特色景点</h2>
+            <div class="feature-box">
+                <div class="feature">
+                    <img src="./images/bianzhong.webp" alt="曾侯乙编钟">
+                    <h3>曾侯乙编钟</h3>
+                    <p>出土于随州擂鼓墩的曾侯乙编钟，是世界上现存最大、最完整的青铜古乐器，被誉为"世界第八大奇迹"。</p>
+                </div>
+                <div class="feature">
+                    <img src="./images/ydsn.webp" alt="炎帝神农故里">
+                    <h3>炎帝神农故里</h3>
+                    <p>炎帝神农诞生地，每年农历四月二十六日举办炎帝神农生辰庆典，吸引海内外炎黄子孙前来祭祖。</p>
+                </div>
+                <div class="feature">
+                    <img src="./images/dhs.webp" alt="大洪山">
+                    <h3>大洪山风景区</h3>
+                    <p>国家级风景名胜区，以奇峰、怪石、幽洞、古木闻名，是集自然景观与佛教文化于一体的旅游胜地。</p>
+                </div>
+            </div>
+        </section>
+        
+        <section>
+            <h2>特色美食</h2>
+            <div class="feature-box">
+                <div class="feature">
+                    <img src="./images/gsrb.webp" alt="广水肉饼">
+                    <h3>广水肉饼</h3>
+                    <p>随州广水特色小吃，外酥里嫩，肉香四溢，已有数百年历史。</p>
+                </div>
+                <div class="feature">
+                    <img src="./images/sanxian.webp" alt="随州三鲜">
+                    <h3>随州三鲜</h3>
+                    <p>由随州特产的香菇、黑木耳、银耳组成，营养丰富，味道鲜美。</p>
+                </div>
+                <div class="feature">
+                    <img src="./images/hsy.webp" alt="洪山鱼">
+                    <h3>洪山鱼</h3>
+                    <p>产自大洪山水库，肉质细嫩，可做成鱼糕、鱼丸等多种美食。</p>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <footer>
+        © 2025 閤梦希 版权所有
+    </footer>
+</body>
+</html>
