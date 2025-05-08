@@ -1,0 +1,12 @@
+/* 图片描述 - 左下角定位 */
+.slide-caption {
+    position: absolute;
+    left: 20px;
+    bottom: 20px;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    max-width: 80%; /* 防止文字过长 */
+    text-align: left; /* 左对齐文字 */
+}

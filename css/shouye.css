@@ -1,0 +1,100 @@
+*{
+    margin: auto;
+    padding: 0;
+    box-sizing: border-box;
+}
+.main{
+    width: 1200px;
+    height: 1700px;
+    background-color: rgb(211, 165, 253);
+    margin: auto;
+}
+.logo{
+    width: 1200px;
+}
+.logo img{
+    width: 1200px;
+}
+.nav{
+    width: 1200px;
+    height: 60px;
+    /*background-color: rgb(211, 165, 253);*/
+    background-color: rgb(211, 165, 253);
+}
+ul{
+    width: 1200px;
+    
+}
+li{
+    width: 235px;
+    height:60px;
+    line-height: 60px;
+    float: left;
+    text-align: center;
+    list-style: none;
+    background-color:rgb(211, 165, 253)
+}
+li:hover{
+    background-color: #e76f6f;
+}
+li a{
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+}
+.shoutu{
+    width: 1200px;
+}
+.shoutu img{
+    width: 1200px;
+}
+.wenzi{
+    width: 1200px;
+    height: 500px;
+    background-color: rgb(240, 152, 152);
+}
+.wenzi-left{
+    float: left;
+    width: 400px;
+    height: 600px;
+    background-color: rgb(211, 165, 253);
+    font-size: 20px;
+    padding: 40px;
+}
+.wenzi h3{
+    margin: 20px;
+}
+.wenzi p{
+    text-indent: 2rem;
+    line-height: 35px;
+}
+.wenzi-right{
+    float: left;
+    width:800px;
+    height: 600px;
+    background-image: url(../images/sky.jpg);
+}
+
+/* 基础样式重置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #333; /* 深色背景 */
+    color: white; /* 所有文字设为白色 */
+}
+
+/* 确保所有文本元素都是白色 */
+h1, h2, h3, h4, h5, h6,
+p, li, a, span {
+    color: white;
+}
+
+/* 链接悬停状态也保持白色 */
+a:hover {
+    color: white;
+    opacity: 0.8; /* 悬停时轻微透明 */
+}
